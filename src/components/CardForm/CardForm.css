@@ -1,0 +1,9 @@
+.card-form {
+    display: grid;
+    width: min(90%, 20rem);
+}
+
+.card-form label {
+    text-transform: uppercase;
+    font-size: small;
+}
