@@ -37,44 +37,54 @@ function CardForm() {
 	const [cardState, cardDispatch] = useReducer(reducer, initialCardState);
 	return (
 		<form className="card-form">
-			<input
-				id="cardholderName"
-				name="cardholderName"
-				value={cardState.cardholderName}
-				onChange={(e) => cardDispatch({ case: e.target.name, value: e.target.value })}
-			/>
+			<div className="card-name">
+				<p className="title">cardholder name</p>
+				<input
+					name="cardholderName"
+					value={cardState.cardholderName}
+					onChange={(e) => cardDispatch({ case: e.target.name, value: e.target.value })}
+					placeholder="e.g Jane Appleseed"
+				/>
+			</div>
 
-			<input
-				name="cardNumber"
-				value={cardState.cardNumber}
-				onChange={(e) => cardDispatch({ case: e.target.name, value: e.target.value })}
-			/>
+			<div className="card-number">
+				<p className="title">card number</p>
+				<input
+					name="cardNumber"
+					value={cardState.cardNumber}
+					onChange={(e) => cardDispatch({ case: e.target.name, value: e.target.value })}
+					placeholder="e.g 1234 5678 9012 3456"
+				/>
+			</div>
 
 			<div className="expiry-date">
-				<p className="form-title">{"exp. date (mm/yy)"}</p>
+				<p className="title">exp. date (mm/yy)</p>
+
 				<input
 					name="mm"
 					value={cardState.expiryDate.mm}
 					onChange={(e) => cardDispatch({ case: e.target.name, value: e.target.value })}
+					placeholder="MM"
 				/>
-
-				<div>
-					<p className="form-title">cvc</p>
-					<input
-						name="yy"
-						value={cardState.expiryDate.yy}
-						onChange={(e) => cardDispatch({ case: e.target.name, value: e.target.value })}
-					/>
-				</div>
+				<input
+					name="yy"
+					value={cardState.expiryDate.yy}
+					onChange={(e) => cardDispatch({ case: e.target.name, value: e.target.value })}
+					placeholder="YY"
+				/>
 			</div>
 
-			<input
-				name="cvc"
-				value={cardState.cvc}
-				onChange={(e) => cardDispatch({ case: e.target.name, value: e.target.value })}
-			/>
+			<div className="cvc">
+				<p className="title">cvc</p>
+				<input
+					name="cvc"
+					value={cardState.cvc}
+					onChange={(e) => cardDispatch({ case: e.target.name, value: e.target.value })}
+					placeholder="e.g 123"
+				/>
+			</div>
 
-			<button>testing</button>
+			<button className="submit">Confirm</button>
 		</form>
 	);
 }

@@ -1,0 +1,8 @@
+.cards {
+    position: absolute;
+    width: 105px;
+}
+
+.card {
+    width: 100%;
+}
