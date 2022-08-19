@@ -7,19 +7,29 @@ body {
 }
 
 main {
-  display: flex;
-}
-
-.background {
-  flex-basis: 40%;
-}
-
-.form-wrapper {
   display: grid;
+  grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(2rem, 1fr);
+  gap: clamp(1rem, 1vw, 4rem);
   place-items: center;
+  min-height: 100vh;
+  padding: 3.5rem;
+  background-size: contain;
+  /* background-position: -15%; */
+}
+
+.cards {
+  grid-column: 2;
+}
+
+.card-form {
+  grid-column: 3;
 }
 
 .img {
   max-width: 100%;
   display: block;
+}
+
+.flex {
+  display: flex;
 }

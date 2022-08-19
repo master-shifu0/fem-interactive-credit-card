@@ -1,8 +1,93 @@
-.cards {
-    position: absolute;
-    width: 105px;
+.logo {
+    margin-bottom: auto;
 }
 
-.card {
-    width: 100%;
+.cards {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.card-img {
+    max-width: 100%;
+    display: block;
+}
+
+.card-front,
+.card-back {
+    position: relative;
+}
+
+
+.card-content {
+    color: hsl(0, 0%, 100%);
+    padding: 1.5rem 1.5rem;
+    position: absolute;
+    inset: 0;
+}
+
+.card-front .card-content {
+    display: grid;
+
+}
+
+.card-front {
+    transform: translateX(min(-9%, -2rem));
+}
+
+.card-back .card-content {
+    padding: 0;
+    position: absolute;
+    flex-direction: row-reverse;
+    display: flex;
+    padding: clamp(1rem, 5vw, 7rem);
+}
+
+.card-front .flex {
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.cardholder-name {
+    text-transform: uppercase;
+}
+
+.card-content .card-number {
+    font-weight: 400;
+    letter-spacing: .1ch;
+    align-self: end;
+    justify-self: center;
+}
+
+.card-content .cvc {
+    align-self: center;
+}
+
+@media (max-width: 1000px) {
+    .card-content .card-number {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 920px) {
+    .card-content .card-number {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 850px) {
+    .card-content .card-number {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .card-content .card-number {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .card-content .card-number {
+        font-size: 1.2rem;
+    }
 }

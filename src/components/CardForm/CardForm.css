@@ -57,3 +57,8 @@ input {
     font-size: inherit;
     width: -webkit-fill-available;
 }
+
+input:focus {
+    outline: none;
+    border: 1px solid hsl(278, 94%, 30%);
+}

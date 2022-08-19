@@ -1,44 +1,11 @@
-import React, { useReducer } from "react";
-
 import "./CardForm.css";
-const initialCardState = {
-	cardholderName: "",
-	cardNumber: "",
-	expiryDate: {
-		mm: "",
-		yy: "",
-	},
-	cvc: "",
-};
-const reducer = (currentCardValue, action) => {
-	switch (action.case) {
-		case "cardholderName":
-			return { ...currentCardValue, cardholderName: action.value };
-		case "cardNumber":
-			return { ...currentCardValue, cardNumber: action.value };
-		case "mm":
-			return {
-				...currentCardValue,
-				expiryDate: { ...currentCardValue.expiryDate, mm: action.value },
-			};
-		case "yy":
-			return {
-				...currentCardValue,
-				expiryDate: { ...currentCardValue.expiryDate, yy: action.value },
-			};
-		case "cvc":
-			return { ...currentCardValue, cvc: action.value };
-		default:
-			return currentCardValue;
-	}
-};
 
-function CardForm() {
-	const [cardState, cardDispatch] = useReducer(reducer, initialCardState);
+function CardForm({ cardState, cardDispatch }) {
 	return (
 		<form className="card-form">
 			<div className="card-name">
 				<p className="title">cardholder name</p>
+
 				<input
 					name="cardholderName"
 					value={cardState.cardholderName}
