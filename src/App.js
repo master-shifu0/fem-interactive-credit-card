@@ -1,10 +1,12 @@
-import { useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 
 import "./App.css";
 
-import background from "./images/bg-main-desktop.png";
+import backgroundDesktop from "./images/bg-main-desktop.png";
+import backgroundMobile from "./images/bg-main-mobile.png";
 import CardForm from "./components/CardForm/CardForm";
 import Cards from "./components/Cards/Cards";
+import Success from "./components/Success/Success";
 
 const initialCardState = {
 	cardholderName: "",
@@ -34,6 +36,8 @@ const reducer = (currentCardValue, action) => {
 			};
 		case "cvc":
 			return { ...currentCardValue, cvc: action.value };
+		case "reset":
+			return initialCardState;
 		default:
 			return currentCardValue;
 	}
@@ -41,14 +45,32 @@ const reducer = (currentCardValue, action) => {
 
 function App() {
 	const [cardState, cardDispatch] = useReducer(reducer, initialCardState);
+	const [mobile, setMobile] = useState(window.matchMedia("(max-width:700px)").matches);
+	const [formIsValid, setFormIsValid] = useState(false);
+
+	function validateForm() {
+		setFormIsValid(true);
+	}
+	function clearForm() {
+		cardDispatch({ case: "reset" });
+	}
+	useEffect(() => {
+		window.matchMedia("(max-width:700px)").addEventListener("change", (e) => setMobile(e.matches));
+	}, []);
+
 	const styles = {
-		backgroundImage: `url(${background})`,
+		backgroundImage: !mobile ? `url(${backgroundDesktop})` : `url(${backgroundMobile})`,
 		backgroundRepeat: "no-repeat",
 	};
+
 	return (
 		<main style={styles}>
 			<Cards cardState={cardState} />
-			<CardForm cardState={cardState} cardDispatch={cardDispatch} />
+			{formIsValid ? (
+				<Success clearForm={clearForm} setFormIsValid={setFormIsValid} />
+			) : (
+				<CardForm validateForm={validateForm} cardState={cardState} cardDispatch={cardDispatch} />
+			)}
 		</main>
 	);
 }

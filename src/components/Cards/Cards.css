@@ -1,9 +1,10 @@
 .logo {
-    margin-bottom: auto;
+    width: 4rem;
 }
 
 .cards {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
 }
 
@@ -27,7 +28,7 @@
 
 .card-front .card-content {
     display: grid;
-
+    font-size: 16px;
 }
 
 .card-front {
@@ -39,7 +40,7 @@
     position: absolute;
     flex-direction: row-reverse;
     display: flex;
-    padding: clamp(1rem, 5vw, 7rem);
+    padding: clamp(1.8rem, 5vw, 7rem);
 }
 
 .card-front .flex {
@@ -52,42 +53,47 @@
 }
 
 .card-content .card-number {
+    --font-size: 1.1rem;
     font-weight: 400;
     letter-spacing: .1ch;
     align-self: end;
     justify-self: center;
+    font-size: var(--font-size);
+}
+
+@media (min-width: 700px) {
+    .card-content .card-number {
+        --font-size: calc(1rem);
+    }
+}
+
+@media (min-width: 800px) {
+    .card-content .card-number {
+        --font-size: calc(1rem + .3vw);
+    }
+}
+
+@media (min-width: 900px) {
+    .card-content .card-number {
+        --font-size: calc(1rem + .6vw);
+    }
+
+    .logo {
+        width: 6rem;
+    }
 }
 
 .card-content .cvc {
     align-self: center;
 }
 
-@media (max-width: 1000px) {
-    .card-content .card-number {
-        font-size: 1.8rem;
-    }
-}
-
-@media (max-width: 920px) {
-    .card-content .card-number {
-        font-size: 1.6rem;
-    }
-}
-
-@media (max-width: 850px) {
-    .card-content .card-number {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 800px) {
-    .card-content .card-number {
-        font-size: 1.25rem;
-    }
-}
-
 @media (max-width: 700px) {
-    .card-content .card-number {
-        font-size: 1.2rem;
+    .cards {
+        flex-direction: column-reverse;
+    }
+
+    .card-front {
+        transform: translate(-10%, -55%);
+        z-index: 2;
     }
 }

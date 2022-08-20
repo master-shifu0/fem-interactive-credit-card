@@ -1,6 +1,6 @@
 .card-form {
     display: grid;
-    width: min(90%, 20rem);
+    width: min(90%, 30rem);
     gap: 1rem;
     grid-template-rows: repeat(4, max-content);
     grid-template-columns: repeat(4, 1fr);
@@ -36,10 +36,7 @@
     grid-template-columns: 100%;
 }
 
-
-.submit {
-    grid-row: 4;
-    grid-column: 1/-1;
+.button {
     background-color: hsl(278, 68%, 11%);
     color: hsl(0, 0%, 100%);
     border: none;
@@ -48,6 +45,11 @@
     font-size: inherit;
     cursor: pointer;
     margin-top: .5rem;
+}
+
+.submit {
+    grid-row: 4;
+    grid-column: 1/-1;
 }
 
 input {
@@ -61,4 +63,9 @@ input {
 input:focus {
     outline: none;
     border: 1px solid hsl(278, 94%, 30%);
+}
+
+.invalid-text {
+    font-size: .8rem;
+    color: hsl(0, 100%, 66%);
 }

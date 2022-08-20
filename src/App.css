@@ -21,8 +21,21 @@ main {
   grid-column: 2;
 }
 
-.card-form {
+.card-form,
+.success {
   grid-column: 3;
+}
+
+.success {
+  display: grid;
+  gap: 1rem;
+  place-items: center;
+  width: min(90%, 20rem);
+}
+
+.success .button {
+  width: 100%;
+  text-transform: capitalize;
 }
 
 .img {
@@ -32,4 +45,30 @@ main {
 
 .flex {
   display: flex;
+}
+
+.success-header {
+  text-transform: uppercase;
+  color: hsl(278, 68%, 11%);
+  font-weight: 100;
+}
+
+.success-text {
+  color: hsl(279, 6%, 55%);
+}
+
+@media (max-width: 700px) {
+  main {
+    grid-template-columns: minmax(2rem, 1fr) minmax(0, 25rem) minmax(2rem, 1fr);
+    padding-inline: 0;
+  }
+
+  .cards {
+    grid-column: 2;
+  }
+
+  .card-form,
+  .success {
+    grid-column: 2;
+  }
 }
